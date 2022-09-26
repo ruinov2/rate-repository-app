@@ -42,6 +42,7 @@ export default function StyledText({
     fontSize === 'bold' && styles.subheading,
     fontWeight === 'bold' && styles.bold,
     align === 'center' && styles.textAlignCenter,
+    style,
   ];
   return (
     <Text style={textStyles} {...restOfProps}>
