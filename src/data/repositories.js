@@ -5,4 +5,10 @@ export default [
   {
     id: 'cosa2',
   },
+  {
+    id: 'cosa3',
+  },
+  {
+    id: 'cosa4',
+  },
 ];
