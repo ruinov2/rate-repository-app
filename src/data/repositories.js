@@ -11,4 +11,7 @@ export default [
   {
     id: 'cosa4',
   },
+  {
+    id: 'cosa5',
+  },
 ];
