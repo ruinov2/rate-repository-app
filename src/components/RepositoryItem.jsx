@@ -3,15 +3,31 @@ import { Image, View, Text, StyleSheet } from 'react-native';
 import StyledText from './StyledText.jsx';
 import RepositoryStats from './RepositoryStats.jsx';
 import theme from '../theme.js';
+import { setStatusBarNetworkActivityIndicatorVisible } from 'expo-status-bar';
+
+const RepositoryItemHeader = ({
+  ownerAvatarUrl,
+  fullName,
+  description,
+  language,
+}) => (
+  <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
+    <View style={{ flex: 0, paddingRight: 10 }}>
+      <Image style={styles.image} source={{ uri: ownerAvatarUrl }} />
+    </View>
+    <View style={{ flex: 1 }}>
+      <StyledText fontSize='subheading' fontWeight='bold'>
+        FullName: {fullName}
+      </StyledText>
+      <StyledText>{description}</StyledText>
+      <StyledText style={styles.language}>{language}</StyledText>
+    </View>
+  </View>
+);
 
 const RepositoryItem = (props) => (
   <View key={props.id} style={styles.container}>
-    <Image style={styles.image} source={{ uri: props.ownerAvatarUrl }} />
-    <StyledText fontSize='subheading' fontWeight='bold'>
-      FullName: {props.fullName}
-    </StyledText>
-    <StyledText>{props.description}</StyledText>
-    <StyledText style={styles.language}>{props.language}</StyledText>
+    <RepositoryItemHeader {...props} />
     <RepositoryStats {...props} />
   </View>
 );
@@ -19,16 +35,16 @@ const RepositoryItem = (props) => (
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    paddingBottom: 5,
-    paddingTop: 5,
+    paddingVertical: 5,
   },
   language: {
     padding: 4,
     color: theme.colors.white,
     backgroundColor: theme.colors.primary,
     alignSelf: 'flex-start',
-    borderRadius: 5,
-    // overflow: 'hidden',
+    marginVertical: 4,
+    borderRadius: 4,
+    overflow: 'hidden',
   },
   image: {
     width: 48,
